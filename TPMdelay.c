@@ -1,5 +1,5 @@
 #include "MKL25Z4.h"
-
+#define led 1
 int main(void) {
     int i;
   
@@ -11,7 +11,7 @@ int main(void) {
     TPM0->CONTROLS[1].CnSC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSB_MASK; // Configurar PWM
     TPM0->CONTROLS[1].CnV = 7500;      // Configurar ciclo de trabajo al 100%
 
-    PORTA->PCR[1] = PORT_PCR_MUX(3);   // Configurar pin PTA1 como TPM0_CH1
+    PORTA->PCR[led] = PORT_PCR_MUX(3);   // Configurar pin PTA1 como TPM0_CH1
 
     TPM0->SC |= TPM_SC_CMOD(1);        // Iniciar TPM0
 
